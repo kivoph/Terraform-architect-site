@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/assistant.css">
 </head>
 <body>
 <header>
@@ -132,7 +133,8 @@
    </form>
    <div id="done" role="status">
     <h3>Booking request ready</h3>
-    <p>Send these details to us to lock in your schedule. We confirm every booking personally.</p>
+    <p>Your details are being sent to our team by email. You can also reach us directly with the buttons below. We confirm every booking personally.</p>
+    <p id="sent" role="status"></p>
     <pre id="sum"></pre>
     <div class="cta"><a class="btn" id="fb" href="https://www.facebook.com/share/1E2cL2BH34/" target="_blank" rel="noopener">Send on Facebook Messenger</a><a class="btn ghost" id="mail" href="mailto:terraformarchitects25@gmail.com">Send by email</a><a class="btn ghost" href="tel:+639363034899">Call 0936 303 4899</a><button class="btn ghost" id="copy" type="button">Copy details</button><button class="btn ghost" id="again" type="button">Edit request</button></div>
    </div>
@@ -158,6 +160,7 @@
 
 <div id="bar" aria-hidden="true"></div>
 <button id="up" type="button" aria-label="Back to top"><svg viewBox="0 0 20 20"><path d="M10 16V4M4 9l6-6 6 6"/></svg></button>
+<script src="js/assistant.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
