@@ -15,6 +15,14 @@ f.addEventListener('submit',function(e){
  sum.textContent='Booking request: Terraform Architects\nName: '+v.get('name')+'\nMobile: '+v.get('phone')+(v.get('email')?'\nEmail: '+v.get('email'):'')+'\nService: '+v.get('service')+'\nMeeting: '+v.get('mtype')+'\nDate: '+ds+', '+v.get('time')+'\nLocation: '+v.get('loc')+(v.get('msg')?'\nDetails: '+v.get('msg'):'');
  document.getElementById('mail').href='mailto:terraformarchitects25@gmail.com?subject='+encodeURIComponent('Booking request: '+v.get('service'))+'&body='+encodeURIComponent(sum.textContent);
  f.style.display='none';done.style.display='block';done.scrollIntoView({block:'center'});
+ var sent=document.getElementById('sent'),em=(v.get('email')||'').trim();
+ if(sent&&window.TFSend){
+  sent.textContent='Sending your request to our team\u2026';
+  var fl={Name:v.get('name'),Mobile:v.get('phone'),Email:em||'-',Service:v.get('service'),'Meeting type':v.get('mtype'),'Preferred date':ds+', '+v.get('time'),Location:v.get('loc'),Details:v.get('msg')||'-',Source:'Booking form'};
+  if(em.indexOf('@')>0)fl._replyto=em;
+  window.TFSend(fl,'Booking request: '+v.get('service')+' - '+v.get('name')).then(function(ok){
+   sent.textContent=ok?'Sent. Our team received your booking request by email and will confirm your schedule.':'We could not send this automatically. Please use one of the buttons below to send it to us.'});
+ }
 });
 document.getElementById('copy').onclick=function(){
  var b=this,x=sum.textContent;
