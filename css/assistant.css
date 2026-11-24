@@ -1,1 +1,67 @@
+/* Terraform Architects - assistant widget. Uses the site's own tokens from style.css. */
 
+/* make room: back-to-top sits above the assistant launcher */
+#up{bottom:calc(86px + env(safe-area-inset-bottom,0px))}
+
+.tfa-launch{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:45;display:flex;align-items:center;gap:10px;height:54px;padding:0 22px 0 16px;border:0;border-radius:27px;background:var(--wood);color:#16181a;font:600 15px var(--sans);cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.3)}
+.tfa-launch:hover{background:#c29c6a}
+.tfa-launch svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linejoin:round;stroke-linecap:round}
+
+.tfa{position:fixed;right:18px;bottom:calc(86px + env(safe-area-inset-bottom,0px));z-index:50;width:min(390px,calc(100vw - 24px));height:min(620px,calc(100vh - 130px));height:min(620px,calc(100dvh - 130px));display:flex;flex-direction:column;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:6px;box-shadow:0 18px 60px rgba(0,0,0,.35);overflow:hidden;transform-origin:100% 100%;animation:tfa-in .22s ease}
+.tfa[hidden]{display:none}
+@keyframes tfa-in{from{opacity:0;transform:translateY(12px) scale(.98)}}
+
+.tfa-h{display:flex;align-items:center;gap:8px;padding:14px 12px 14px 18px;background:var(--ink);color:#fff;border-bottom:3px solid var(--wood)}
+.tfa-t{flex:1;min-width:0;display:flex;flex-direction:column}
+.tfa-t b{font:600 19px/1.2 var(--serif)}
+.tfa-t span{font-size:12.5px;color:#c9ccd0}
+.tfa-x{flex:none;min-width:36px;height:36px;padding:0 10px;border:1px solid rgba(255,255,255,.35);border-radius:3px;background:none;color:#fff;font:600 13px var(--sans);cursor:pointer}
+.tfa-x:hover{background:rgba(255,255,255,.1)}
+.tfa-close{font-size:24px;line-height:1;padding:0}
+
+.tfa-log{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:16px;display:flex;flex-direction:column;gap:12px;background:var(--bg)}
+.tfa-m{max-width:88%;padding:11px 14px;border-radius:4px;font-size:15px;line-height:1.55;white-space:pre-line;overflow-wrap:anywhere}
+.tfa-m.bot{align-self:flex-start;background:var(--card);border:1px solid var(--line)}
+.tfa-m.user{align-self:flex-end;background:var(--wood);color:#16181a}
+.tfa-m.tfa-wide{max-width:100%;width:100%;padding:0;border:0;background:none}
+.tfa-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;white-space:normal}
+
+.tfa-typ{display:flex;gap:5px;padding:14px}
+.tfa-typ i{width:7px;height:7px;border-radius:50%;background:var(--mut);animation:tfa-dot 1s infinite ease-in-out}
+.tfa-typ i:nth-child(2){animation-delay:.15s}
+.tfa-typ i:nth-child(3){animation-delay:.3s}
+@keyframes tfa-dot{0%,80%,100%{opacity:.3}40%{opacity:1}}
+
+.tfa-b{display:inline-flex;align-items:center;justify-content:center;background:var(--wood);color:#16181a;border:1px solid var(--wood);border-radius:3px;padding:9px 14px;font:600 14px var(--sans);text-decoration:none;cursor:pointer;text-align:center}
+.tfa-b:hover{background:#c29c6a;border-color:#c29c6a}
+.tfa-b.g{background:transparent;color:var(--fg);border-color:var(--line)}
+.tfa-b.g:hover{border-color:var(--wood);background:transparent}
+.tfa-b:disabled{opacity:.6;cursor:wait}
+
+.tfa-chips{display:flex;gap:8px;overflow-x:auto;padding:10px 12px;border-top:1px solid var(--line);background:var(--card);scrollbar-width:none}
+.tfa-chips::-webkit-scrollbar{display:none}
+.tfa-c{flex:none;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:999px;padding:7px 14px;font:600 13.5px var(--sans);cursor:pointer;white-space:nowrap}
+.tfa-c:hover{border-color:var(--wood)}
+
+.tfa-in{display:flex;gap:8px;padding:10px 12px 12px;border-top:1px solid var(--line);background:var(--card)}
+.tfa-in input{flex:1;min-width:0}
+.tfa-in .tfa-b{padding:0 16px}
+
+.tfa-card{display:grid;gap:12px;background:var(--card);border:1px solid var(--wood);border-radius:4px;padding:14px;white-space:normal}
+.tfa-card label{font-size:13.5px}
+.tfa-card textarea{resize:vertical;min-height:84px}
+.tfa-card .err{min-height:0}
+.tfa-hp{position:absolute!important;left:-9999px;width:1px!important;height:1px!important;opacity:0}
+
+.tfa-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* booking form: status line shown after the request is sent to the team's email */
+#sent{font-weight:600;margin:0 0 14px}
+
+@media (max-width:520px){
+ .tfa-launch{padding:0;width:54px;justify-content:center}
+ .tfa-ll{display:none}
+ .tfa{inset:calc(env(safe-area-inset-top,0px) + 8px) 8px calc(8px + env(safe-area-inset-bottom,0px)) 8px;width:auto;height:auto}
+ .tfa-launch[aria-expanded="true"]{display:none}
+}
+@media (prefers-reduced-motion:reduce){.tfa,.tfa *{animation:none!important;transition:none!important}}
